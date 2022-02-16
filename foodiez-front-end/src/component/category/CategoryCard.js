@@ -4,13 +4,13 @@ import { Card, Col, Row } from "react-bootstrap";
 const categoryCard = () => {
   return (
     <div className="category-cards">
+      {/* ---------------------------------- BREAKFAST:: -------------------------------------------*/}
       <Row xs={1} md={2} className="g-4">
         {Array.from({ length: 1 }).map((_, idx) => (
           <Col>
-            <Card>
-              {/* ---------------------------------- BREAKFAST:: -------------------------------------------*/}
+            <Card className="breakfast-img-text">
               <Card.Img
-                className="category-card-img"
+                className="category-card-img "
                 variant="top"
                 src="https://cdn4.vectorstock.com/i/1000x1000/05/08/breakfast-meal-with-milk-cereals-and-clock-set-vector-14240508.jpg"
               />
@@ -31,9 +31,9 @@ const categoryCard = () => {
       <Row xs={1} md={2} className="g-4">
         {Array.from({ length: 1 }).map((_, idx) => (
           <Col>
-            <Card>
+            <Card className="lunch-img-text">
               <Card.Img
-                className="category-card-img"
+                className="category-card-img "
                 variant="top"
                 src="https://jf-staeulalia.pt/img/other/26/collection-free-lunch-cliparts.jpg"
               />
@@ -54,9 +54,9 @@ const categoryCard = () => {
       <Row xs={1} md={2} className="g-4">
         {Array.from({ length: 1 }).map((_, idx) => (
           <Col>
-            <Card>
+            <Card className="dinner-img-text">
               <Card.Img
-                className="category-card-img"
+                className="category-card-img "
                 variant="top"
                 src="https://thumbs.dreamstime.com/b/dinner-icon-logo-modern-line-style-high-quality-black-outline-pictogram-web-site-design-mobile-apps-vector-83645599.jpg"
               />

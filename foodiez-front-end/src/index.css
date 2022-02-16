@@ -1,7 +1,6 @@
 /* IF YOU WANT TO USE IT DON'T FORGET TO ** IMPORT IT **  */
 
 body {
-  color: white;
   text-align: center;
   background-position: center;
   background-size: cover;
@@ -9,7 +8,13 @@ body {
   height: 100vh;
   background-image: url("https://media.istockphoto.com/photos/culinary-background-with-traditional-ingredients-of-italian-cuisine-picture-id1278745986?b=1&k=20&m=1278745986&s=170667a&w=0&h=O7DjUu6D-mBNvwS68Ou_BmNF22a5XwrQgk2j9uV2Hs4=");
 }
-/* -----------------------  CategoryCard = CLASSES : (cards + card-img + card-body{title - text} )---------------------------------------------- */
+/* -----------------------    WELCOME ( IMG + H1)     ---------------------------------------------- */
+.welcome-img {
+}
+.welcome-text {
+  color: white;
+}
+/* -----------------------   CategoryCard = CLASSES : (cards + card-img + card-body{title - text} )     ---------------------------------------------- */
 .category-cards {
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   display: grid;
@@ -23,5 +28,19 @@ body {
   font-size: 10px;
   color: white;
   font-size: 50px;
+}
+.breakfast-img-text {
+  border: black solid;
+  margin: 10px;
+}
+
+.lunch-img-text {
+  border: black solid;
+  margin: 10px;
+}
+
+.dinner-img-text {
+  border: black solid;
+  margin: 10px;
 }
 /* ---------------------            CategoryList = CLASSES :               -------------------------------------------------------- */
