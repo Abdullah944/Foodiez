@@ -1,8 +1,6 @@
 import { makeAutoObservable } from "mobx";
 import instance from "./instance";
 
-//  TODO: last thing done re-factor and rename just check the category path :
-
 class CategoryStore {
   // make the category default value is empty string:
   categories = [];
@@ -12,11 +10,13 @@ class CategoryStore {
     makeAutoObservable(this);
   }
   //----------------------------------------------------------------------------------------------
-  // CREATE Category:
+  // CREATE Category   DONE  :
   createCategory = async (newCategory) => {
     try {
-      const response = await instance.post("/category", newCategory); // check if category path single or plural?????????????
-      this.category.push(response.data);
+      // form data for showing the img
+      // const formData = new FormData();
+      const response = await instance.post("/category", newCategory);
+      this.categories.push(response.data);
     } catch (error) {
       console.log(
         "🚀 ~ file: categoryStore.js ~ line 16 ~ categoryStore ~ createProduct= ~ error",
@@ -28,7 +28,7 @@ class CategoryStore {
   // FETCH category:
   fetchCategory = async () => {
     try {
-      const response = await instance.get("/category"); // check if category path single or plural?????????????
+      const response = await instance.get("/category");
       this.categories = response.data;
     } catch (error) {
       console.log("categoryStore -> fetchCategory -> error", error);
@@ -38,7 +38,7 @@ class CategoryStore {
   // UPDATE category:
   updateCategory = async (updateCategory, categoryId) => {
     try {
-      const res = await instance.put(`/category/${categoryId}`, updateCategory); // // check if category path single or plural?????????????
+      const res = await instance.put(`/category/${categoryId}`, updateCategory); //
       this.categories = this.categories.map((category) =>
         category._id === categoryId ? res.data : category
       );
@@ -50,7 +50,7 @@ class CategoryStore {
   // DELETE category:
   deleteCategory = async (categoryId) => {
     try {
-      await instance.delete(`/category/${categoryId}`); // check if category path single or plural?????????????
+      await instance.delete(`/category/${categoryId}`);
       this.categories = this.categories.filter(
         (category) => category._id !== categoryId
       );

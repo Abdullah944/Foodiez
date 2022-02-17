@@ -1,49 +1,35 @@
 import React from "react";
-import { Badge, ListGroup } from "react-bootstrap";
+import { useState } from "react";
+import { Badge, Form, ListGroup, Row, Stack } from "react-bootstrap";
+import categoryStore from "../../stores/categoryStore";
+import CategoryModel from "../modal/CategoryModel";
+import categoryCard from "./CategoryCard";
+import { observer } from "mobx-react";
 
 const categoryList = () => {
+  const [query, setQuery] = useState("");
+  console.log(categoryStore.categories);
+
+  const categoryList = categoryStore.categories
+    .filter((category) =>
+      category.name.toLowerCase().includes(query.toLowerCase())
+    )
+    .map((category) => <categoryCard key={category._id} category={category} />);
   return (
     <div>
-      <ListGroup as="ol" numbered>
-        <ListGroup.Item
-          as="li"
-          className="d-flex justify-content-between align-items-start"
-        >
-          <div className="ms-2 me-auto">
-            <div className="fw-bold">Subheading</div>
-            Cras justo odio
-          </div>
-          <Badge variant="primary" pill>
-            14
-          </Badge>
-        </ListGroup.Item>
-        <ListGroup.Item
-          as="li"
-          className="d-flex justify-content-between align-items-start"
-        >
-          <div className="ms-2 me-auto">
-            <div className="fw-bold">Subheading</div>
-            Cras justo odio
-          </div>
-          <Badge variant="primary" pill>
-            14
-          </Badge>
-        </ListGroup.Item>
-        <ListGroup.Item
-          as="li"
-          className="d-flex justify-content-between align-items-start"
-        >
-          <div className="ms-2 me-auto">
-            <div className="fw-bold">Subheading</div>
-            Cras justo odio
-          </div>
-          <Badge variant="primary" pill>
-            14
-          </Badge>
-        </ListGroup.Item>
-      </ListGroup>
+      <h1 className="title">Products</h1>
+      <Stack direction="horizontal" gap={3}>
+        <Form.Control
+          className="m-2"
+          placeholder="Search for product by name"
+          onChange={(event) => setQuery(event.target.value)}
+        />
+        <CategoryModel />
+      </Stack>
+
+      <Row>{categoryList}</Row>
     </div>
   );
 };
 
-export default categoryList;
+export default observer(categoryList);
