@@ -1,11 +1,11 @@
 import { Button, InputGroup, FormControl, Modal } from "react-bootstrap";
 import { useState } from "react";
-import categoryStore from "../../stores/categoryStore";
+import recipeStore from "../../stores/recipesStore";
 
-function CategoryModel({ oldCategory }) {
+function RecipeModel({ oldRecipe }) {
   const [show, setShow] = useState(false);
-  const [category, setCategory] = useState(
-    oldCategory ?? {
+  const [recipe, setRecipe] = useState(
+    oldRecipe ?? {
       name: "",
       image: "",
       description: "",
@@ -16,22 +16,22 @@ function CategoryModel({ oldCategory }) {
   const handleShow = () => setShow(true);
 
   const handleChange = (event) =>
-    setCategory({ ...category, [event.target.name]: event.target.value });
+    setRecipe({ ...recipe, [event.target.name]: event.target.value });
 
   const handleImage = (event) =>
-    setCategory({ ...category, image: event.target.files[0] });
+    setRecipe({ ...recipe, image: event.target.files[0] });
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (oldCategory) categoryStore.updateCategory(category, oldCategory._id);
-    else categoryStore.createCategory(category);
+    if (oldRecipe) recipeStore.updateRecipe(recipe, oldRecipe._id);
+    else recipeStore.createRecipe(recipe);
     handleClose();
   };
 
   return (
     <>
       <Button className="btn-new" variant="outline-dark" onClick={handleShow}>
-        {oldCategory ? "Edit" : "New"}
+        {oldRecipe ? "Edit" : "New"}
       </Button>
       <Modal show={show} onHide={handleClose}>
         <Modal.Body>
@@ -41,7 +41,7 @@ function CategoryModel({ oldCategory }) {
               <FormControl
                 placeholder="Your product's name"
                 name="name"
-                value={category.name}
+                value={recipe.name}
                 type="text"
                 onChange={handleChange}
               />
@@ -50,7 +50,7 @@ function CategoryModel({ oldCategory }) {
               <InputGroup.Text>Image</InputGroup.Text>
               <FormControl
                 name="image"
-                // value={category.image}
+                value={recipe.image}
                 type="file"
                 onChange={handleImage}
                 placeholder="Image"
@@ -61,14 +61,14 @@ function CategoryModel({ oldCategory }) {
               <InputGroup.Text>Description</InputGroup.Text>
               <FormControl
                 name="description"
-                value={category.description}
+                value={recipe.description}
                 type="text"
                 onChange={handleChange}
                 placeholder="Description"
               />
             </InputGroup>
             <Button variant="outline-dark" type="submit">
-              {oldCategory ? "Edit" : "Add"} Category
+              {oldRecipe ? "Edit" : "Add"} recipe
             </Button>
           </form>
         </Modal.Body>
@@ -77,4 +77,4 @@ function CategoryModel({ oldCategory }) {
   );
 }
 
-export default CategoryModel;
+export default RecipeModel;

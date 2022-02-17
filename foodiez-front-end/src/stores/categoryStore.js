@@ -13,13 +13,16 @@ class CategoryStore {
   // CREATE Category   DONE  :
   createCategory = async (newCategory) => {
     try {
-      // form data for showing the img
-      // const formData = new FormData();
-      const response = await instance.post("/category", newCategory);
+      // ! form data for SHOWING the img::
+      const formData = new FormData(); // Currently empty
+      for (const key in newCategory) {
+        formData.append(key, newCategory[key]); // appaned
+      }
+      const response = await instance.post("/category", formData);
       this.categories.push(response.data);
     } catch (error) {
       console.log(
-        "🚀 ~ file: categoryStore.js ~ line 16 ~ categoryStore ~ createProduct= ~ error",
+        "🚀 ~ file: categoryStore.js ~ line 16 ~ categoryStore ~ createCategory= ~ error",
         error
       );
     }
@@ -43,7 +46,7 @@ class CategoryStore {
         category._id === categoryId ? res.data : category
       );
     } catch (error) {
-      console.log("categoryStore -> updateProduct -> error", error);
+      console.log("categoryStore -> updateCategory-> error", error);
     }
   };
   //----------------------------------------------------------------------------------------------
@@ -55,7 +58,7 @@ class CategoryStore {
         (category) => category._id !== categoryId
       );
     } catch (error) {
-      console.log("categoryStore -> deleteProduct -> error", error);
+      console.log("categoryStore -> deleteCategory -> error", error);
     }
   };
 }

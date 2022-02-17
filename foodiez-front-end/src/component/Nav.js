@@ -1,6 +1,8 @@
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
 
+// ! USE LINK TO TO NAVIGATE BETWEEN PAGES:
+
 function Nav() {
   return (
     <nav
@@ -15,7 +17,7 @@ function Nav() {
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item mx-0 mx-lg-1">
-              <NavLink class="nav-link py-3 px-0 px-lg-3 rounded" to="/">
+              <NavLink class="nav-link py-3 px-0 px-lg-3 rounded" to="/recipe">
                 respires
               </NavLink>
             </li>
