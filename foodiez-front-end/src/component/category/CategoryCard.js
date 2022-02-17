@@ -3,8 +3,8 @@ import { Button, Card, Col, Row } from "react-bootstrap";
 import categoryStore from "../../stores/categoryStore";
 import CategoryModel from "../modal/CategoryModel";
 
-const categoryCard = ({ category }) => {
-  const handleDelete = () => categoryStore.deleteProduct(category._id);
+const CategoryCard = ({ category }) => {
+  const handleDelete = () => categoryStore.deleteCategory(category._id);
 
   return (
     <Col className="col-lg-4 mx-auto">
@@ -16,11 +16,11 @@ const categoryCard = ({ category }) => {
           <Button className="m-1" onClick={handleDelete} variant="danger">
             DELETE
           </Button>
-          <CategoryModel oldcategory={category} />
+          <CategoryModel oldCategory={category} />
         </Card.Body>
       </Card>
     </Col>
   );
 };
 
-export default categoryCard;
+export default CategoryCard;

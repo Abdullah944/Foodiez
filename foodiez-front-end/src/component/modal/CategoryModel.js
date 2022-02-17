@@ -27,7 +27,7 @@ function CategoryModel({ oldCategory }) {
 
   return (
     <>
-      <Button variant="outline-dark" onClick={handleShow}>
+      <Button className="btn-new" variant="outline-dark" onClick={handleShow}>
         {oldCategory ? "Edit" : "New"}
       </Button>
       <Modal show={show} onHide={handleClose}>
