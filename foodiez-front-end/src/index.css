@@ -3,10 +3,15 @@
 body {
   position: relative;
   text-align: center;
-  width: 100vw;
-  height: 100vh;
-  /* background-image: url("https://media.istockphoto.com/photos/culinary-background-with-traditional-ingredients-of-italian-cuisine-picture-id1278745986?b=1&k=20&m=1278745986&s=170667a&w=0&h=O7DjUu6D-mBNvwS68Ou_BmNF22a5XwrQgk2j9uV2Hs4="); */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background-image: url("https://media.istockphoto.com/photos/culinary-background-with-traditional-ingredients-of-italian-cuisine-picture-id1278745986?b=1&k=20&m=1278745986&s=170667a&w=0&h=O7DjUu6D-mBNvwS68Ou_BmNF22a5XwrQgk2j9uV2Hs4=");
 }
+.home-div {
+}
+
+/* ------------------------background and nav---------------------------------- */
 .bk {
   position: absolute;
   top: 0;
@@ -17,14 +22,21 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.5;
+  /* opacity: 0.5; */
 }
+.nav {
+  display: inline-block;
+  color: white;
+  font-weight: 800;
+}
+/* -------------------------------------------------------------------------------- */
 /* -----------------------    WELCOME ( IMG + H1)     ---------------------------------------------- */
 .welcome-img {
 }
 .welcome-text {
   color: white;
 }
+
 /* -----------------------   CategoryCard = CLASSES : (cards + card-img + card-body{title - text} )     ---------------------------------------------- */
 .category-cards {
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
@@ -37,9 +49,10 @@ body {
 }
 .card-body {
   font-size: 10px;
-  color: white;
+  color: black;
   font-size: 50px;
 }
+
 .breakfast-img-text {
   border: black solid;
   margin: 10px;
@@ -55,15 +68,66 @@ body {
   margin: 10px;
 }
 /* ---------------------            CategoryList = CLASSES :               -------------------------------------------------------- */
-
+.title-categories {
+  margin-top: 40px;
+  text-align: center;
+  color: white;
+  font-weight: 400;
+  font-size: 3rem;
+  border: solid;
+}
+.title-card-category-name {
+  text-align: center;
+}
+.title-card-category-text {
+  text-align: center;
+  font-size: 30px;
+}
 /*--------------------------------------- in the CATEGORY-MODAL------------------------------------------------- */
 .btn-new {
   background-color: #4caf50; /* Green */
-  border: none;
-  color: white;
+  border: solid;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
+}
+/*--------------------------------------- in the user------------------------------------------------- */
+
+.title-user {
+  color: rgb(255, 255, 255);
+  margin-top: 75px;
+  text-align: center;
+  border: solid rgb(255, 255, 255);
+  font-size: 3rem;
+}
+.bk-usr {
+  /* background-image: url("https://media.istockphoto.com/photos/culinary-background-with-traditional-ingredients-of-italian-cuisine-picture-id1278745986?b=1&k=20&m=1278745986&s=170667a&w=0&h=O7DjUu6D-mBNvwS68Ou_BmNF22a5XwrQgk2j9uV2Hs4="); */
+}
+.recipe-user {
+  text-align: end;
+  color: white;
+  display: inline-block;
+  /* border: #4caf50 solid; */
+  margin-left: 350px;
+  text-align: center;
+}
+.ingredient-title {
+  color: white;
+  /* border: #4caf50 solid; */
+  display: inline-block;
+  text-align: center;
+}
+/*--------------------------------------- in the user------------------------------------------------- */
+/* ---------------------            recipeList = CLASSES :               -------------------------------------------------------- */
+.title-recipe {
+  color: rgb(255, 255, 255);
+  margin-top: 75px;
+  text-align: center;
+  border: solid rgb(255, 255, 255);
+  font-size: 3rem;
+}
+.new-btn {
+  text-align: center;
 }

@@ -6,7 +6,7 @@ import RecipeModel from "../modal/RecipeModal";
 // ? DONE MAKE recipe card and modal showed in the front end
 
 const RecipeCard = ({ recipe }) => {
-  const handleDelete = () => recipeStore.deleteRecipe(recipe._id);
+  // const handleDelete = () => recipeStore.deleteRecipe(recipe._id);
 
   return (
     <Col className="col-lg-4 mx-auto">
@@ -15,10 +15,6 @@ const RecipeCard = ({ recipe }) => {
         <Card.Body>
           <Card.Title>{recipe.name}</Card.Title>
           <Card.Text>{recipe.description}</Card.Text>
-          <Button className="m-1" onClick={handleDelete} variant="danger">
-            DELETE
-          </Button>
-          <RecipeModel oldRecipe={recipe} />
         </Card.Body>
       </Card>
     </Col>
@@ -26,3 +22,14 @@ const RecipeCard = ({ recipe }) => {
 };
 
 export default RecipeCard;
+{
+  /* <Button className="m-1" onClick={handleDelete} variant="danger">
+            DELETE
+          </Button> */
+}
+{
+  /* this line to make and show the editing button */
+}
+{
+  /* <RecipeModel oldRecipe={recipe} /> */
+}

@@ -1,11 +1,9 @@
 import { makeAutoObservable } from "mobx";
 import instance from "./instance";
 // ? DONE COPY AND RENAMING 17/2/2022.................
-
+// why recipes with s??
 class RecipesStore {
-  // make the recipe default value is empty string:
   recipes = [];
-  //INFO: null of it's obj and in use status.
 
   constructor() {
     makeAutoObservable(this);

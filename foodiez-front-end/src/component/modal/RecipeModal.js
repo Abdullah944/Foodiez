@@ -4,13 +4,12 @@ import recipeStore from "../../stores/recipesStore";
 
 function RecipeModel({ oldRecipe }) {
   const [show, setShow] = useState(false);
-  const [recipe, setRecipe] = useState(
-    oldRecipe ?? {
-      name: "",
-      image: "",
-      description: "",
-    }
-  );
+  const [recipe, setRecipe] = useState({
+    name: "",
+    image: "",
+    description: "",
+  });
+  // oldRecipe ??
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -23,14 +22,18 @@ function RecipeModel({ oldRecipe }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (oldRecipe) recipeStore.updateRecipe(recipe, oldRecipe._id);
-    else recipeStore.createRecipe(recipe);
+    // if (oldRecipe) recipeStore.updateRecipe(recipe, oldRecipe._id);
+    recipeStore.createRecipe(recipe);
     handleClose();
   };
 
   return (
     <>
-      <Button className="btn-new" variant="outline-dark" onClick={handleShow}>
+      <Button
+        className="btn-new bg-light new-btn"
+        variant="outline-dark"
+        onClick={handleShow}
+      >
         {oldRecipe ? "Edit" : "New"}
       </Button>
       <Modal show={show} onHide={handleClose}>
@@ -39,25 +42,25 @@ function RecipeModel({ oldRecipe }) {
             <InputGroup className="mb-3">
               <InputGroup.Text>Name</InputGroup.Text>
               <FormControl
-                placeholder="Your product's name"
+                placeholder="Your recipe's name"
                 name="name"
                 value={recipe.name}
                 type="text"
                 onChange={handleChange}
               />
             </InputGroup>
-            <InputGroup className="mb-3">
+            <InputGroup className="mb-3 ">
               <InputGroup.Text>Image</InputGroup.Text>
               <FormControl
                 name="image"
-                value={recipe.image}
+                // value={recipe.image}
                 type="file"
                 onChange={handleImage}
                 placeholder="Image"
               />
             </InputGroup>
 
-            <InputGroup className="mb-3">
+            <InputGroup className="mb-3 ">
               <InputGroup.Text>Description</InputGroup.Text>
               <FormControl
                 name="description"
@@ -67,6 +70,7 @@ function RecipeModel({ oldRecipe }) {
                 placeholder="Description"
               />
             </InputGroup>
+
             <Button variant="outline-dark" type="submit">
               {oldRecipe ? "Edit" : "Add"} recipe
             </Button>

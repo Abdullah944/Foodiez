@@ -1,35 +1,64 @@
 import React, { useState } from "react";
+import { Form, Row, Stack } from "react-bootstrap";
 import recipeStore from "../../stores/recipesStore";
+import CategoryModel from "../modal/CategoryModel";
+import RecipeModel from "../modal/RecipeModal";
 import RecipeCard from "../recipes/RecipeCard";
 // import SearchBar from "./SearchBar";
 
 function RecipesList() {
   const [query, setQuery] = useState("");
 
+  // const recipeList = recipeStore.recipes
+  //   .filter((recipe) => recipe.name.toLowerCase().includes(query.toLowerCase()))
+  //   .map((recipe) => <RecipeCard key={recipe._id} recipe={recipe} />);
+
   const recipeList = recipeStore.recipes
-    .filter((recipe) => recipe.name.toLowerCase().includes(query.toLowerCase()))
-    .map((recipe) => <RecipeCard key={recipe._id} recipe={recipe} />);
+    .filter((recipeList) =>
+      recipeList.name.toLowerCase().includes(query.toLowerCase())
+    )
+    .map((recipeList) => (
+      <RecipeCard key={recipeList._id} recipeList={recipeList} />
+    ));
 
   return (
-    <section class="page-section portfolio" id="portfolio">
-      <div class="container">
-        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">
-          Explore Recipes
-        </h2>
-        <br />
-        {/* <SearchBar setQuery={setQuery} /> */}
-        <div class="divider-custom">
-          <div class="divider-custom-line"></div>
-          <div class="divider-custom-icon">
-            <i class="fas fa-star"></i>
-          </div>
-          <div class="divider-custom-line"></div>
-        </div>
-        ( // !---- ROW TO SHOW THE RECIPE LIST -------------------------)
-        <div class="row justify-content-center">{recipeList}</div>
-      </div>
-    </section>
+    <div>
+      <h1 className="title-recipe text-uppercase">recipeList</h1>
+      <Stack direction="horizontal" gap={3}>
+        {/* <Form.Control
+          className="m-2"
+          placeholder="Search for recipeList by name"
+          onChange={(event) => setQuery(event.target.value)}
+        /> */}
+
+        <RecipeModel />
+      </Stack>
+
+      <Row>{recipeList}</Row>
+    </div>
   );
 }
 
 export default RecipesList;
+
+{
+  /* <section className="page-section portfolio" id="portfolio">
+<div className="container ">
+  <h2 className=" title-recipe page-section-heading text-center text-uppercase mb-0">
+    Explore Recipes
+  </h2>
+  <RecipeModel />
+  <br />
+  {/* <SearchBar setQuery={setQuery} /> */
+}
+//   <div className="divider-custom">
+//     <div className="divider-custom-line"></div>
+//     <div className="divider-custom-icon">
+//       <i className="fas fa-star"></i>
+//     </div>
+//     <div className="divider-custom-line"></div>
+//   </div>
+//   ( // !---- ROW TO SHOW THE RECIPE LIST -------------------------)
+//   <div className="row justify-content-center">{recipeList}</div>
+// </div>
+// </section> */}

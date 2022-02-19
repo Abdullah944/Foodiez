@@ -4,7 +4,7 @@ import CategoryModel from "./modal/CategoryModel";
 
 const Home = () => {
   return (
-    <div className="big-div">
+    <div className="home-div ">
       <img
         className="bk"
         alt="background"

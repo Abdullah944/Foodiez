@@ -4,13 +4,12 @@ import categoryStore from "../../stores/categoryStore";
 
 function CategoryModel({ oldCategory }) {
   const [show, setShow] = useState(false);
-  const [category, setCategory] = useState(
-    oldCategory ?? {
-      name: "",
-      image: "",
-      description: "",
-    }
-  );
+  const [category, setCategory] = useState({
+    name: "",
+    image: "",
+    description: "",
+  });
+  // oldCategory ??
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -23,14 +22,20 @@ function CategoryModel({ oldCategory }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (oldCategory) categoryStore.updateCategory(category, oldCategory._id);
-    else categoryStore.createCategory(category);
+    // if (oldCategory) categoryStore.updateCategory(category, oldCategory._id);
+    // else
+    categoryStore.createCategory(category);
     handleClose();
   };
 
   return (
     <>
-      <Button className="btn-new" variant="outline-dark" onClick={handleShow}>
+      {/* ! this the EDIT button which we don't need - new and edit */}
+      <Button
+        className="btn-new bg-light"
+        variant="outline-dark"
+        onClick={handleShow}
+      >
         {oldCategory ? "Edit" : "New"}
       </Button>
       <Modal show={show} onHide={handleClose}>
@@ -39,7 +44,7 @@ function CategoryModel({ oldCategory }) {
             <InputGroup className="mb-3">
               <InputGroup.Text>Name</InputGroup.Text>
               <FormControl
-                placeholder="Your product's name"
+                placeholder="Your category's name"
                 name="name"
                 value={category.name}
                 type="text"
@@ -67,6 +72,7 @@ function CategoryModel({ oldCategory }) {
                 placeholder="Description"
               />
             </InputGroup>
+            {/* button inside the modal */}
             <Button variant="outline-dark" type="submit">
               {oldCategory ? "Edit" : "Add"} Category
             </Button>

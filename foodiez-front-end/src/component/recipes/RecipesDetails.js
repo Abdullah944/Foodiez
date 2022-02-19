@@ -1,12 +1,13 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { Navigate } from "react-router-dom";
+import recipesStore from "../../stores/recipesStore";
 
 function RecipesDetails() {
   // ! DON'T THINK WE NEED THIS BECAUSE THIS IF YOU HAVE DATA LOCAL:
   const { slug } = useParams(); // use methods to grab a var from app.js
-  //   const trip = data.find((trips) => trips.slug === slug); //find in data objs if the slug in the data match the slug in the app.js.
-  const recipe = { slug };
+  const recipe = recipesStore.find((recipe) => recipe.slug === slug); //find in data objs if the slug in the data match the slug in the app.js.
+
   if (!slug) {
     // if there is no detail go home.
     return <Navigate to="/" />;
@@ -28,21 +29,18 @@ function RecipesDetails() {
                   </div>
                   <div className="divider-custom-line"></div>
                 </div>
+                {/* -------------- slug information -----------------------------------*/}
                 <img
                   className="img-fluid rounded mb-5"
-                  src={recipe.img}
+                  src={recipe.image}
                   alt="..."
                 />
                 <p className="mb-4">
-                  City : {recipe.city}
+                  NAME : {recipe.name}
                   <br />
-                  Length : {recipe.length1}Km
+                  description : {recipe.description}
                   <br />
-                  Rating : {recipe.rating}
-                  <br />
-                  Difficulty : {recipe.difficulty}
-                  <br />
-                  Details : {recipe.details}
+                  {/*   ------------- ------------------- ------------------------ */}
                 </p>
               </div>
             </div>

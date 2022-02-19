@@ -1,36 +1,40 @@
 import { Button, InputGroup, FormControl, Modal } from "react-bootstrap";
 import { useState } from "react";
-import recipeStore from "../../stores/recipesStore";
+import ingredientStore from "../../stores/ingredientStore";
 
-function RecipeModel({ oldRecipe }) {
+function IngredientModel({ oldIngredient }) {
   const [show, setShow] = useState(false);
-  const [recipe, setRecipe] = useState({
+  const [ingredient, setIngredient] = useState({
     name: "",
     image: "",
     description: "",
   });
-  // oldRecipe ??
+  // oldIngredient ??
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const handleChange = (event) =>
-    setRecipe({ ...recipe, [event.target.name]: event.target.value });
+    setIngredient({ ...ingredient, [event.target.name]: event.target.value });
 
   const handleImage = (event) =>
-    setRecipe({ ...recipe, image: event.target.files[0] });
+    setIngredient({ ...ingredient, image: event.target.files[0] });
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // if (oldRecipe) recipeStore.updateRecipe(recipe, oldRecipe._id);
-    recipeStore.createRecipe(recipe);
+    ingredientStore.createIngredient(ingredient);
     handleClose();
   };
 
   return (
     <>
-      <Button className="btn-new" variant="outline-dark" onClick={handleShow}>
-        {oldRecipe ? "Edit" : "New"}
+      {/* ! this the EDIT button which we don't need - new and edit */}
+      <Button
+        className="btn-new bg-light"
+        variant="outline-dark"
+        onClick={handleShow}
+      >
+        {oldIngredient ? "Edit" : "New"}
       </Button>
       <Modal show={show} onHide={handleClose}>
         <Modal.Body>
@@ -38,9 +42,9 @@ function RecipeModel({ oldRecipe }) {
             <InputGroup className="mb-3">
               <InputGroup.Text>Name</InputGroup.Text>
               <FormControl
-                placeholder="Your recipe's name"
+                placeholder="Your ingredient's name"
                 name="name"
-                value={recipe.name}
+                value={ingredient.name}
                 type="text"
                 onChange={handleChange}
               />
@@ -49,7 +53,7 @@ function RecipeModel({ oldRecipe }) {
               <InputGroup.Text>Image</InputGroup.Text>
               <FormControl
                 name="image"
-                // value={recipe.image}
+                // value={category.image}
                 type="file"
                 onChange={handleImage}
                 placeholder="Image"
@@ -60,14 +64,15 @@ function RecipeModel({ oldRecipe }) {
               <InputGroup.Text>Description</InputGroup.Text>
               <FormControl
                 name="description"
-                value={recipe.description}
+                value={ingredient.description}
                 type="text"
                 onChange={handleChange}
                 placeholder="Description"
               />
             </InputGroup>
+            {/* button inside the modal */}
             <Button variant="outline-dark" type="submit">
-              {/* {oldRecipe ? "Edit" : "Add"} recipe */}
+              {oldIngredient ? "Edit" : "Add"} ingredient
             </Button>
           </form>
         </Modal.Body>
@@ -76,4 +81,4 @@ function RecipeModel({ oldRecipe }) {
   );
 }
 
-export default RecipeModel;
+export default IngredientModel;
