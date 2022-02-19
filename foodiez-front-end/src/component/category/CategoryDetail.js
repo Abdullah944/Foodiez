@@ -1,7 +1,7 @@
 import React from "react";
-
+import { Form, Row, Stack } from "react-bootstrap";
 import { Navigate, useParams } from "react-router-dom";
-import RecipesModel from "../modal/RecipesModel";
+import RecipeModel from "../modal/RecipeModal";
 import categoryStore from "../../stores/categoryStore";
 function CategoryDetail() {
   const { slug } = useParams();
@@ -11,6 +11,9 @@ function CategoryDetail() {
   if (!slug) {
     return <Navigate to="/" />;
   }
+  const recipeList = categoryStore.categories.map(
+    (category) => category.recipes
+  );
 
   return (
     <div style={{ color: "black" }} class="modal-dialog modal-xl">
@@ -19,6 +22,8 @@ function CategoryDetail() {
           <div class="container">
             <div class="row justify-content-center">
               <div class="col-lg-8">
+                <br />
+                <br />
                 <h2
                   style={{ color: "black" }}
                   class="portfolio-modal-title text-secondary text-uppercase mb-0"
@@ -37,8 +42,10 @@ function CategoryDetail() {
                   src={category.image}
                   alt="..."
                 />
-                <RecipesModel categoryId={category._id} />
                 <p class="mb-4">Description: {category.description}</p>
+
+                <RecipeModel categoryId={category._id} />
+                <br>{/* <Row>{recipeList}</Row> */}</br>
               </div>
             </div>
           </div>

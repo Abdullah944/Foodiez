@@ -19,9 +19,6 @@ function CategoryModel({ oldCategory }) {
   const handleImage = (event) =>
     setCategory({ ...category, [event.target.name]: event.target.files[0] });
 
-  const handleImage = (event) =>
-    setCategory({ ...category, image: event.target.files[0] });
-
   const handleSubmit = (event) => {
     event.preventDefault();
     // if (oldCategory) categoryStore.updateCategory(category, oldCategory._id);
