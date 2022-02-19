@@ -67,7 +67,7 @@ function RecipesModel({ oldRecipes, categoryId }) {
               />
             </InputGroup>
             <Button variant="outline-dark" type="submit">
-              {oldRecipes ? "Edit" : "Add"} recipes
+              {oldRecipes ? "Edit" : "Add"} recipe
             </Button>
           </form>
         </Modal.Body>
