@@ -14,8 +14,10 @@ class CategoryStore {
   createCategory = async (newCategory) => {
     try {
       // form data for showing the img
-      // const formData = new FormData();
-      const response = await instance.post("/category", newCategory);
+      const formData = new FormData();
+      for (const key in newCategory) formData.append(key, newCategory[key]);
+      // console.log(newCategory);
+      const response = await instance.post("/category", formData);
       this.categories.push(response.data);
     } catch (error) {
       console.log(
