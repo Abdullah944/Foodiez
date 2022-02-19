@@ -1,7 +1,7 @@
 import CategoryCard from "./CategoryCard";
 import { useState } from "react";
 import { observer } from "mobx-react";
-import { Button, Form, Row, Stack } from "react-bootstrap";
+import { Form, Row, Stack } from "react-bootstrap";
 import categoryStore from "../../stores/categoryStore";
 import CategoryModel from "../modal/CategoryModel";
 
@@ -16,7 +16,7 @@ function CategoryList() {
 
   return (
     <div>
-      <h1 className="title">categories</h1>
+      <h1 className="title-categories text-uppercase">categories</h1>
       <Stack direction="horizontal" gap={3}>
         <Form.Control
           className="m-2"

@@ -1,32 +1,28 @@
 import { Button, InputGroup, FormControl, Modal } from "react-bootstrap";
 import { useState } from "react";
-import categoryStore from "../../stores/categoryStore";
+import ingredientStore from "../../stores/ingredientStore";
 
-function CategoryModel({ oldCategory }) {
+function IngredientModel({ oldIngredient }) {
   const [show, setShow] = useState(false);
-  const [category, setCategory] = useState({
+  const [ingredient, setIngredient] = useState({
     name: "",
     image: "",
     description: "",
   });
-  // oldCategory ??
+  // oldIngredient ??
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const handleChange = (event) =>
-    setCategory({ ...category, [event.target.name]: event.target.value });
-  const handleImage = (event) =>
-    setCategory({ ...category, [event.target.name]: event.target.files[0] });
+    setIngredient({ ...ingredient, [event.target.name]: event.target.value });
 
   const handleImage = (event) =>
-    setCategory({ ...category, image: event.target.files[0] });
+    setIngredient({ ...ingredient, image: event.target.files[0] });
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // if (oldCategory) categoryStore.updateCategory(category, oldCategory._id);
-    // else
-    categoryStore.createCategory(category);
+    ingredientStore.createIngredient(ingredient);
     handleClose();
   };
 
@@ -38,7 +34,7 @@ function CategoryModel({ oldCategory }) {
         variant="outline-dark"
         onClick={handleShow}
       >
-        {oldCategory ? "Edit" : "New"}
+        {oldIngredient ? "Edit" : "New"}
       </Button>
       <Modal show={show} onHide={handleClose}>
         <Modal.Body>
@@ -46,9 +42,9 @@ function CategoryModel({ oldCategory }) {
             <InputGroup className="mb-3">
               <InputGroup.Text>Name</InputGroup.Text>
               <FormControl
-                placeholder="Your category's name"
+                placeholder="Your ingredient's name"
                 name="name"
-                value={category.name}
+                value={ingredient.name}
                 type="text"
                 onChange={handleChange}
               />
@@ -68,7 +64,7 @@ function CategoryModel({ oldCategory }) {
               <InputGroup.Text>Description</InputGroup.Text>
               <FormControl
                 name="description"
-                value={category.description}
+                value={ingredient.description}
                 type="text"
                 onChange={handleChange}
                 placeholder="Description"
@@ -76,7 +72,7 @@ function CategoryModel({ oldCategory }) {
             </InputGroup>
             {/* button inside the modal */}
             <Button variant="outline-dark" type="submit">
-              {oldCategory ? "Edit" : "Add"} Category
+              {oldIngredient ? "Edit" : "Add"} ingredient
             </Button>
           </form>
         </Modal.Body>
@@ -85,4 +81,4 @@ function CategoryModel({ oldCategory }) {
   );
 }
 
-export default CategoryModel;
+export default IngredientModel;

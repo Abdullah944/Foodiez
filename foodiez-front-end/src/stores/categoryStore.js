@@ -21,7 +21,7 @@ class CategoryStore {
       this.categories.push(response.data);
     } catch (error) {
       console.log(
-        "🚀 ~ file: categoryStore.js ~ line 16 ~ categoryStore ~ createProduct= ~ error",
+        "🚀 ~ file: categoryStore.js ~ line 16 ~ categoryStore ~ createCategory= ~ error",
         error
       );
     }
@@ -40,12 +40,12 @@ class CategoryStore {
   // UPDATE category:
   updateCategory = async (updateCategory, categoryId) => {
     try {
-      const res = await instance.put(`/category/${categoryId}`, updateCategory); //
+      const res = await instance.put(`/category/${categoryId}`, updateCategory);
       this.categories = this.categories.map((category) =>
         category._id === categoryId ? res.data : category
       );
     } catch (error) {
-      console.log("categoryStore -> updateProduct -> error", error);
+      console.log("categoryStore -> updateCategory-> error", error);
     }
   };
   //----------------------------------------------------------------------------------------------
@@ -57,7 +57,7 @@ class CategoryStore {
         (category) => category._id !== categoryId
       );
     } catch (error) {
-      console.log("categoryStore -> deleteProduct -> error", error);
+      console.log("categoryStore -> deleteCategory -> error", error);
     }
   };
 }
