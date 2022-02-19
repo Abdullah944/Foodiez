@@ -1,44 +1,36 @@
 import { Button, InputGroup, FormControl, Modal } from "react-bootstrap";
 import { useState } from "react";
-import categoryStore from "../../stores/categoryStore";
+import recipesStore from "../../stores/recipesStore";
 
-function CategoryModel({ oldCategory }) {
+function RecipesModel({ oldRecipes, categoryId }) {
   const [show, setShow] = useState(false);
-  const [category, setCategory] = useState({
-    name: "",
-    image: "",
-    description: "",
-  });
-  // oldCategory ??
+  const [recipes, setRecipes] = useState(
+    oldRecipes ?? {
+      name: "",
+      image: "",
+      description: "",
+    }
+  );
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const handleChange = (event) =>
-    setCategory({ ...category, [event.target.name]: event.target.value });
+    setRecipes({ ...recipes, [event.target.name]: event.target.value });
   const handleImage = (event) =>
-    setCategory({ ...category, [event.target.name]: event.target.files[0] });
-
-  const handleImage = (event) =>
-    setCategory({ ...category, image: event.target.files[0] });
+    setRecipes({ ...recipes, [event.target.name]: event.target.files[0] });
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // if (oldCategory) categoryStore.updateCategory(category, oldCategory._id);
-    // else
-    categoryStore.createCategory(category);
+    if (oldRecipes) recipesStore.updateRecipes(recipes, oldRecipes._id);
+    else recipesStore.createRecipes(recipes, categoryId);
     handleClose();
   };
 
   return (
     <>
-      {/* ! this the EDIT button which we don't need - new and edit */}
-      <Button
-        className="btn-new bg-light"
-        variant="outline-dark"
-        onClick={handleShow}
-      >
-        {oldCategory ? "Edit" : "New"}
+      <Button className="btn-new" variant="outline-dark" onClick={handleShow}>
+        {oldRecipes ? "Edit" : "New"}
       </Button>
       <Modal show={show} onHide={handleClose}>
         <Modal.Body>
@@ -46,9 +38,9 @@ function CategoryModel({ oldCategory }) {
             <InputGroup className="mb-3">
               <InputGroup.Text>Name</InputGroup.Text>
               <FormControl
-                placeholder="Your category's name"
+                placeholder="Your recipes's name"
                 name="name"
-                value={category.name}
+                value={recipes.name}
                 type="text"
                 onChange={handleChange}
               />
@@ -57,7 +49,7 @@ function CategoryModel({ oldCategory }) {
               <InputGroup.Text>Image</InputGroup.Text>
               <FormControl
                 name="image"
-                // value={category.image}
+                // value={recipes.image}
                 type="file"
                 onChange={handleImage}
                 placeholder="Image"
@@ -68,15 +60,14 @@ function CategoryModel({ oldCategory }) {
               <InputGroup.Text>Description</InputGroup.Text>
               <FormControl
                 name="description"
-                value={category.description}
+                value={recipes.description}
                 type="text"
                 onChange={handleChange}
                 placeholder="Description"
               />
             </InputGroup>
-            {/* button inside the modal */}
             <Button variant="outline-dark" type="submit">
-              {oldCategory ? "Edit" : "Add"} Category
+              {oldRecipes ? "Edit" : "Add"} recipe
             </Button>
           </form>
         </Modal.Body>
@@ -85,4 +76,4 @@ function CategoryModel({ oldCategory }) {
   );
 }
 
-export default CategoryModel;
+export default RecipesModel;

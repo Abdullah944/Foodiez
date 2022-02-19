@@ -13,17 +13,19 @@ const CategoryCard = ({ category }) => {
     <Col className="col-lg-4 mx-auto">
       <Card>
         <Card.Body>
-          <Card.Img variant="top" src={category.image} alt={category.name} />
-          <Card.Title className="title-card-category-name">
-            {category.name}
-          </Card.Title>
-          <Card.Text className="title-card-category-text">
+          <Card.Title style={{ color: "black" }}>{category.name}</Card.Title>
+          <Card.Text style={{ color: "black" }}>
             {category.description}
           </Card.Text>
-          {/*  it's should be connected by id */}
-          <Link to="/recipe/:slug">
-            <Row>{recipeList}</Row>
+          <br />
+          <Link to={`/category/${category.slug}`}>
+            <Card.Img variant="top" src={category.image} alt={category.name} />
           </Link>
+
+          {/* <Button className="m-1" onClick={handleDelete} variant="danger">
+            DELETE
+          </Button> */}
+          <CategoryModel oldCategory={category} />
         </Card.Body>
       </Card>
     </Col>

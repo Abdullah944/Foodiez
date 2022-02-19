@@ -13,11 +13,10 @@ class CategoryStore {
   // CREATE Category   DONE  :
   createCategory = async (newCategory) => {
     try {
-      // ! form data for SHOWING the img::
-      const formData = new FormData(); // Currently empty
-      for (const key in newCategory) {
-        formData.append(key, newCategory[key]); // append
-      }
+      // form data for showing the img
+      const formData = new FormData();
+      for (const key in newCategory) formData.append(key, newCategory[key]);
+      // console.log(newCategory);
       const response = await instance.post("/category", formData);
       this.categories.push(response.data);
     } catch (error) {
