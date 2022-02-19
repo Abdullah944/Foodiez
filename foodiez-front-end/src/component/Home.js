@@ -1,13 +1,10 @@
 import React from "react";
-import CategoryCard from "../component/category/CategoryCard";
-import CategoryList from "../component/category/CategoryCard";
-import Nav from "./Nav";
+import CategoryList from "./category/CategoryList";
 import CategoryModel from "./modal/CategoryModel";
-import { Route, Switch } from "react-router";
 
 const Home = () => {
   return (
-    <div className="big-div">
+    <div className="home-div ">
       <img
         className="bk"
         alt="background"
@@ -16,19 +13,16 @@ const Home = () => {
 
       <CategoryModel />
 
-      {/* makeing prolem of display */}
-      {/* <CategoryList /> */}
+      {/* makeing prolem of display ( I THINK IT'S FIXED) */}
+      <CategoryList />
     </div>
   );
 };
 
 export default Home;
 
-// add nav bar and topic\::
+// ?--------------------------  add  topic\------------------------------------------::
 // <div>
-{
-  /* <Nav /> */
-}
 
 // <div className="welcome-img">
 //   <img
@@ -40,3 +34,4 @@ export default Home;
 //   welcome to the best place to please you hunger
 // </h1>
 // </div>
+// ?-------------------------- -----------------------------------------------::

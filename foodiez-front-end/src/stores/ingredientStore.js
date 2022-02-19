@@ -1,9 +1,9 @@
 import { makeAutoObservable } from "mobx";
 import instance from "./instance";
 
-class CategoryStore {
+class IngredientStore {
   // make the category default value is empty string:
-  categories = [];
+  ingredients = [];
   //INFO: null of it's obj and in use status.
 
   constructor() {
@@ -11,68 +11,71 @@ class CategoryStore {
   }
   //----------------------------------------------------------------------------------------------
   // CREATE Category   DONE  :
-  createCategory = async (newCategory) => {
+  createIngredient = async (newIngredient) => {
     try {
       // ! form data for SHOWING the img::
       const formData = new FormData(); // Currently empty
-      for (const key in newCategory) {
-        formData.append(key, newCategory[key]); // append
+      for (const key in newIngredient) {
+        formData.append(key, newIngredient[key]); // append
       }
-      const response = await instance.post("/category", formData);
-      this.categories.push(response.data);
+      const response = await instance.post("/user", formData);
+      this.ingredients.push(response.data);
     } catch (error) {
       console.log(
-        "🚀 ~ file: categoryStore.js ~ line 16 ~ categoryStore ~ createCategory= ~ error",
+        "🚀 ~ file: ingredientStore.js ~ line 16 ~ ingredientStore ~ createIngredient= ~ error",
         error
       );
     }
   };
   //   ----------------------------------------------------------------------------------------------
-  // FETCH category:
-  fetchCategory = async () => {
+  // FETCH ingredient:
+  fetchIngredient = async () => {
     try {
-      const response = await instance.get("/category");
-      this.categories = response.data;
+      const response = await instance.get("/ingredient");
+      this.ingredients = response.data;
     } catch (error) {
-      console.log("categoryStore -> fetchCategory -> error", error);
+      console.log("ingredientStore -> fetchIngredient -> error", error);
     }
   };
   //----------------------------------------------------------------------------------------------
-  // UPDATE category:
-  updateCategory = async (updateCategory, categoryId) => {
+  // UPDATE ingredient:
+  updateIngredient = async (updateIngredient, ingredientId) => {
     try {
-      const res = await instance.put(`/category/${categoryId}`, updateCategory);
-      this.categories = this.categories.map((category) =>
-        category._id === categoryId ? res.data : category
+      const res = await instance.put(
+        `/ingredient/${ingredientId}`,
+        updateIngredient
+      );
+      this.ingredients = this.ingredients.map((ingredient) =>
+        ingredient._id === ingredientId ? res.data : ingredient
       );
     } catch (error) {
-      console.log("categoryStore -> updateCategory-> error", error);
+      console.log("ingredientStore -> updateIngredient-> error", error);
     }
   };
   //----------------------------------------------------------------------------------------------
-  // DELETE category:
-  deleteCategory = async (categoryId) => {
+  // DELETE ingredient:
+  deleteIngredient = async (ingredientId) => {
     try {
-      await instance.delete(`/category/${categoryId}`);
-      this.categories = this.categories.filter(
-        (category) => category._id !== categoryId
+      await instance.delete(`/ingredient/${ingredientId}`);
+      this.ingredients = this.ingredients.filter(
+        (ingredient) => ingredient._id !== ingredientId
       );
     } catch (error) {
-      console.log("categoryStore -> deleteCategory -> error", error);
+      console.log("ingredientStore -> deleteIngredient -> error", error);
     }
   };
 }
 // ----------------------------------------------------------------------------------------------
-const categoryStore = new CategoryStore();
+const ingredientStore = new IngredientStore();
 // It will only call this function when the app first starts
-categoryStore.fetchCategory();
-export default categoryStore;
+ingredientStore.fetchIngredient();
+export default ingredientStore;
 
 // axios.METHOD(URL, BODY)
-// check if category is single or plural???????
+// check if ingredient is single or plural???????
 
 // GET: Fetching Data
-// axios.get("http://localhost:8000/api/categories");             // check if category path single or plural?????????????
+// axios.get("http://localhost:8000/api/categories");             // check if ingredient path single or plural?????????????
 // Return array of categories
 
 // POST => It takes a BODY, and is used when we Send Data (Create)
