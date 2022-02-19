@@ -2,6 +2,7 @@ import React from "react";
 import { Button, Card, Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import RecipeCard from "../recipes/RecipeCard";
+import CategoryModel from "../modal/CategoryModel";
 
 const CategoryCard = ({ category }) => {
   //! this const make a recipe below the catogry::

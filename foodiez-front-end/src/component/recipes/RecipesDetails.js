@@ -1,12 +1,15 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { Navigate } from "react-router-dom";
-import recipesStore from "../../stores/recipesStore";
+import categoryStore from "../../stores/categoryStore";
+// import recipesStore from "../../stores/recipesStore";
+import { Form, Row, Stack } from "react-bootstrap";
+import RecipeModel from "../modal/RecipeModal";
 
 function RecipesDetails() {
   // ! DON'T THINK WE NEED THIS BECAUSE THIS IF YOU HAVE DATA LOCAL:
   const { slug } = useParams(); // use methods to grab a var from app.js
-  const recipe = recipesStore.find((recipe) => recipe.slug === slug); //find in data objs if the slug in the data match the slug in the app.js.
+  const category = categoryStore.find((category) => category.slug === slug); //find in data objs if the slug in the data match the slug in the app.js.
 
   if (!slug) {
     // if there is no detail go home.
@@ -20,7 +23,7 @@ function RecipesDetails() {
             <div className="row justify-content-center">
               <div className="col-lg-8">
                 <h2 className="portfolio-modal-title text-secondary text-uppercase mb-0">
-                  {recipe.name}
+                  {category.name}
                 </h2>
                 <div className="divider-custom">
                   <div className="divider-custom-line"></div>
@@ -32,14 +35,16 @@ function RecipesDetails() {
                 {/* -------------- slug information -----------------------------------*/}
                 <img
                   className="img-fluid rounded mb-5"
-                  src={recipe.image}
+                  src={category.image}
                   alt="..."
                 />
                 <p className="mb-4">
-                  NAME : {recipe.name}
+                  NAME : {category.name}
                   <br />
-                  description : {recipe.description}
+                  description : {category.description}
                   <br />
+                  <RecipeModel />
+                  <Row>{category.recipes}</Row>
                   {/*   ------------- ------------------- ------------------------ */}
                 </p>
               </div>

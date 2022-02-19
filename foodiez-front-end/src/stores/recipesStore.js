@@ -14,10 +14,9 @@ class RecipesStore {
     try {
       //! form data for SHOWING the img::
       const formData = new FormData(); // Currently empty
-      for (const key in newRecipe) {
-        formData.append(key, newRecipe[key]); // appaned
-      }
-      const response = await instance.post("/recipe", formData);
+      for (const key in newRecipe) formData.append(key, newRecipe[key]); // appaned
+
+      const response = await instance.post("/category/:slug", formData);
       this.recipes.push(response.data);
     } catch (error) {
       console.log(

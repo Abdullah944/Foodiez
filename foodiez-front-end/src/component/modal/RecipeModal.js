@@ -18,7 +18,7 @@ function RecipeModel({ oldRecipe }) {
     setRecipe({ ...recipe, [event.target.name]: event.target.value });
 
   const handleImage = (event) =>
-    setRecipe({ ...recipe, image: event.target.files[0] });
+    setRecipe({ ...recipe, [event.target.name]: event.target.files[0] });
 
   const handleSubmit = (event) => {
     event.preventDefault();
