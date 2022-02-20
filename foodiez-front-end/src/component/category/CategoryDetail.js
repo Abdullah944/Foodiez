@@ -3,17 +3,20 @@ import { Form, Row, Stack } from "react-bootstrap";
 import { Navigate, useParams } from "react-router-dom";
 import RecipeModel from "../modal/RecipeModal";
 import categoryStore from "../../stores/categoryStore";
+import { observer } from "mobx-react";
+import RecipeCard from "../recipes/RecipeCard";
 function CategoryDetail() {
   const { slug } = useParams();
-  const category = categoryStore.categories.find(
-    (category) => category.slug === slug
-  );
+  const category = categoryStore.categories.find((category) => {
+    // console.log("####", category.recipes, slug);
+    return category.slug === slug;
+  });
   if (!slug) {
     return <Navigate to="/" />;
   }
-  const recipeList = categoryStore.categories.map(
-    (category) => category.recipes
-  );
+  if (!category) {
+    return <h1>Loading</h1>;
+  }
 
   return (
     <div style={{ color: "black" }} class="modal-dialog modal-xl">
@@ -43,9 +46,11 @@ function CategoryDetail() {
                   alt="..."
                 />
                 <p class="mb-4">Description: {category.description}</p>
-
                 <RecipeModel categoryId={category._id} />
-                <br>{/* <Row>{recipeList}</Row> */}</br>
+
+                {category.recipes.map((recipe) => (
+                  <RecipeCard key={category._id} recipe={recipe} />
+                ))}
               </div>
             </div>
           </div>
@@ -55,4 +60,4 @@ function CategoryDetail() {
   );
 }
 
-export default CategoryDetail;
+export default observer(CategoryDetail);

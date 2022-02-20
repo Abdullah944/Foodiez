@@ -41,13 +41,13 @@ function Nav() {
               </NavLink>
             </li>
             <li className="nav-item mx-0 mx-lg-1">
-              <NavLink
+              {/* <NavLink
                 className="nav-link py-3 px-0 px-lg-3 rounded "
                 style={{ color: "black" }}
                 to="/user"
               >
                 User
-              </NavLink>
+              </NavLink> */}
             </li>
           </ul>
         </div>

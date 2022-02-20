@@ -1,20 +1,15 @@
 import React from "react";
-import { useParams } from "react-router-dom";
-import { Navigate } from "react-router-dom";
-import categoryStore from "../../stores/categoryStore";
 // import recipesStore from "../../stores/recipesStore";
-import { Form, Row, Stack } from "react-bootstrap";
+
 import RecipeModel from "../modal/RecipeModal";
+import RecipeCard from "./RecipeCard";
+import recipesStore from "../../stores/recipesStore";
+import { observer } from "mobx-react";
 
 function RecipesDetails() {
   // ! DON'T THINK WE NEED THIS BECAUSE THIS IF YOU HAVE DATA LOCAL:
-  const { slug } = useParams(); // use methods to grab a var from app.js
-  const category = categoryStore.find((category) => category.slug === slug); //find in data objs if the slug in the data match the slug in the app.js.
-
-  if (!slug) {
-    // if there is no detail go home.
-    return <Navigate to="/" />;
-  }
+  const recipe = recipesStore.recipes; //find in data objs if the slug in the data match the slug in the app.js.
+  console.log(recipe);
   return (
     <div className="modal-dialog modal-xl">
       <div className="modal-content">
@@ -23,7 +18,7 @@ function RecipesDetails() {
             <div className="row justify-content-center">
               <div className="col-lg-8">
                 <h2 className="portfolio-modal-title text-secondary text-uppercase mb-0">
-                  {category.name}
+                  {recipe.name}
                 </h2>
                 <div className="divider-custom">
                   <div className="divider-custom-line"></div>
@@ -35,16 +30,18 @@ function RecipesDetails() {
                 {/* -------------- slug information -----------------------------------*/}
                 <img
                   className="img-fluid rounded mb-5"
-                  src={category.image}
+                  src={recipe.image}
                   alt="..."
                 />
                 <p className="mb-4">
-                  NAME : {category.name}
+                  NAME : {recipe.name}
                   <br />
-                  description : {category.description}
+                  description : {recipe.description}
                   <br />
                   <RecipeModel />
-                  <Row>{category.recipes}</Row>
+                  {recipe.map((recipe) => (
+                    <RecipeCard recipe={recipe} />
+                  ))}
                   {/*   ------------- ------------------- ------------------------ */}
                 </p>
               </div>
@@ -56,4 +53,4 @@ function RecipesDetails() {
   );
 }
 
-export default RecipesDetails;
+export default observer(RecipesDetails);

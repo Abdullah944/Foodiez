@@ -1,4 +1,10 @@
-import { Button, InputGroup, FormControl, Modal } from "react-bootstrap";
+import {
+  Button,
+  InputGroup,
+  FormControl,
+  Modal,
+  Dropdown,
+} from "react-bootstrap";
 import { useState } from "react";
 import categoryStore from "../../stores/categoryStore";
 
@@ -16,6 +22,7 @@ function CategoryModel({ oldCategory }) {
 
   const handleChange = (event) =>
     setCategory({ ...category, [event.target.name]: event.target.value });
+
   const handleImage = (event) =>
     setCategory({ ...category, [event.target.name]: event.target.files[0] });
 
@@ -71,6 +78,17 @@ function CategoryModel({ oldCategory }) {
                 placeholder="Description"
               />
             </InputGroup>
+            {/* <Dropdown className="mb-3">
+              <Dropdown.Toggle variant="success" id="dropdown-basic">
+                category
+              </Dropdown.Toggle>
+
+              <Dropdown.Menu>
+                <Dropdown.Item href="#/action-1">Breakfast</Dropdown.Item>
+                <Dropdown.Item href="#/action-2">Lunch</Dropdown.Item>
+                <Dropdown.Item href="#/action-3">Dinner</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown> */}
             {/* button inside the modal */}
             <Button variant="outline-dark" type="submit">
               {oldCategory ? "Edit" : "Add"} Category

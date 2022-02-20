@@ -1,21 +1,25 @@
 import React from "react";
 import { Button, Card, Col, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import recipeStore from "../../stores/recipesStore";
+import IngredientCard from "../ingredient/ingredientCard";
 import RecipeModel from "../modal/RecipeModal";
 
 // ? DONE MAKE recipe card and modal showed in the front end
 
 const RecipeCard = ({ recipe }) => {
   // const handleDelete = () => recipeStore.deleteRecipe(recipe._id);
-
   return (
     <Col className="col-lg-4 mx-auto">
       <Card>
-        <Card.Img variant="top" src={recipe.image} alt={recipe.name} />
+        <Link to={`/recipes/${recipe.slug}`}>
+          <Card.Img variant="top" src={recipe.image} alt={recipe.name} />
+        </Link>
         <Card.Body>
           <Card.Title>{recipe.name}</Card.Title>
           <Card.Text>{recipe.description}</Card.Text>
         </Card.Body>
+        {/* (<IngredientCard recipe={recipe} />) */}
       </Card>
     </Col>
   );

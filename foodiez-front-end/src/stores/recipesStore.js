@@ -1,5 +1,7 @@
 import { makeAutoObservable } from "mobx";
+import categoryStore from "./categoryStore";
 import instance from "./instance";
+
 // ? DONE COPY AND RENAMING 17/2/2022.................
 // why recipes with s??
 class RecipesStore {
@@ -10,14 +12,21 @@ class RecipesStore {
   }
   //----------------------------------------------------------------------------------------------
   // CREATE recipe   DONE  :
-  createRecipe = async (newRecipe) => {
+  createRecipe = async (newRecipe, categoryId) => {
     try {
       //! form data for SHOWING the img::
       const formData = new FormData(); // Currently empty
       for (const key in newRecipe) formData.append(key, newRecipe[key]); // appaned
+      console.log("new recipe", newRecipe, categoryId);
+      const response = await instance.post(`/category/${categoryId}`, formData);
+      console.log("res", response);
 
-      const response = await instance.post("/category/:slug", formData);
       this.recipes.push(response.data);
+      categoryStore.categories.map((category) =>
+        category._id === categoryId
+          ? category.recipes.push(response.data)
+          : category
+      );
     } catch (error) {
       console.log(
         "🚀 ~ file: recipeStore.js ~ line 16 ~ recipeStore ~ createRecipe= ~ error",

@@ -2,7 +2,7 @@ import { Button, InputGroup, FormControl, Modal } from "react-bootstrap";
 import { useState } from "react";
 import recipeStore from "../../stores/recipesStore";
 
-function RecipeModel({ oldRecipe }) {
+function RecipeModel({ oldRecipe, categoryId }) {
   const [show, setShow] = useState(false);
   const [recipe, setRecipe] = useState({
     name: "",
@@ -23,7 +23,8 @@ function RecipeModel({ oldRecipe }) {
   const handleSubmit = (event) => {
     event.preventDefault();
     // if (oldRecipe) recipeStore.updateRecipe(recipe, oldRecipe._id);
-    recipeStore.createRecipe(recipe);
+    // ! we need to relate the recipe is to category  id:
+    recipeStore.createRecipe(recipe, categoryId); // we need category id
     handleClose();
   };
 

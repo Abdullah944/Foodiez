@@ -6,6 +6,7 @@ import Nav from "./component/Nav";
 import RecipesList from "./component/recipes/RecipesList";
 import RecipesDetails from "./component/recipes/RecipesDetails";
 import UserIngredientsRecipe from "./component/user/UserIngredientsRecipe";
+import IngredientDetail from "./component/ingredient/ingridentDetail";
 
 function App() {
   return (
@@ -15,9 +16,11 @@ function App() {
         <Route path="/" element={<Home />}></Route>
         <Route path="/category" element={<CategoryList />}></Route>
         {/* slug is the data will be given by the user. in our case it's from the data file. */}
-        <Route path="/recipes" element={<RecipesList />}></Route>
+        <Route path="/recipes" element={<RecipesDetails />}></Route>
+        <Route path="/recipes/:slug" element={<IngredientDetail />}></Route>
         <Route path="/category/:slug" element={<CategoryDetail />}></Route>
-        <Route path="/user" element={<UserIngredientsRecipe />}></Route>
+        {/* <Route path="/recipes/:slug" element={<ingredientDetail />}></Route> */}
+        {/* <Route path="/user" element={<UserIngredientsRecipe />}></Route> */}
       </Routes>
     </div>
   );
