@@ -52,7 +52,6 @@ body {
 .card-body {
   font-size: 10px;
   color: black;
-  font-size: 50px;
 }
 
 .breakfast-img-text {
@@ -77,6 +76,7 @@ body {
   font-weight: 400;
   font-size: 3rem;
   border: solid;
+  font-family: sans-serif;
 }
 .title-card-category-name {
   text-align: center;
@@ -84,6 +84,7 @@ body {
 .title-card-category-text {
   text-align: center;
   font-size: 30px;
+  font-family: sans-serif;
 }
 /*--------------------------------------- in the CATEGORY-MODAL------------------------------------------------- */
 .btn-new {
@@ -120,6 +121,7 @@ body {
   /* border: #4caf50 solid; */
   display: inline-block;
   text-align: center;
+  font-family: sans-serif;
 }
 /*--------------------------------------- in the user------------------------------------------------- */
 /* ---------------------            recipeList = CLASSES :               -------------------------------------------------------- */
@@ -129,6 +131,7 @@ body {
   text-align: center;
   border: solid rgb(255, 255, 255);
   font-size: 3rem;
+  font-family: sans-serif;
 }
 .new-btn {
   text-align: center;
@@ -153,11 +156,14 @@ body {
 }
 .card-background {
   background-color: #359f07de;
-  border: black solid;
+  border: rgb(29, 21, 21) solid;
 }
 #ingredient-name-text-card {
   font-size: 35px;
 }
 #ingredient-text-card {
   font-size: 20px;
+}
+.category-card-img {
+  width: 100px;
 }

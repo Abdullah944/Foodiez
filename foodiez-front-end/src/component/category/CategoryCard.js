@@ -11,11 +11,10 @@ const CategoryCard = ({ category }) => {
       <Card>
         <Card.Body className="card-background">
           <Card.Title id="category-name-text-category-card">
-            <u> Name:</u> {category.name}
+            {category.name}
           </Card.Title>
           <br />
           <Card.Text id="description-text-category-card">
-            <u> Description: </u>
             {category.description}
           </Card.Text>
           <br />
