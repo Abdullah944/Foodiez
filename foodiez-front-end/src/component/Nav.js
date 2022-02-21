@@ -12,11 +12,11 @@ function Nav() {
   // const recipe = recipesStore.find((recipe) => recipe.slug === recipeSlug);
   return (
     <nav
-      className="navbar navbar-expand-lg bg-success text-uppercase fixed-top nav "
+      className="navbar navbar-expand-lg bg-success text-uppercase fixed-top nav  "
       id="mainNav"
     >
       <div className="container nav ">
-        <Link className="navbar-brand " style={{ color: "black" }} to="/">
+        <Link className="navbar-brand " style={{ color: "white" }} to="/">
           foodies
         </Link>
 
@@ -25,13 +25,13 @@ function Nav() {
             <li className="nav-item mx-0 mx-lg-1">
               <NavLink
                 className="nav-link py-3 px-0 px-lg-3 rounded "
-                style={{ color: "black" }}
+                style={{ color: "white" }}
                 to="/recipes"
               >
-                respires
+                Recipes
               </NavLink>
             </li>
-            <li className="nav-item mx-0 mx-lg-1">
+            {/* <li className="nav-item mx-0 mx-lg-1">
               <NavLink
                 className="nav-link py-3 px-0 px-lg-3 rounded "
                 style={{ color: "black" }}
@@ -39,7 +39,7 @@ function Nav() {
               >
                 RecipesDetails
               </NavLink>
-            </li>
+            </li> */}
             <li className="nav-item mx-0 mx-lg-1">
               {/* <NavLink
                 className="nav-link py-3 px-0 px-lg-3 rounded "

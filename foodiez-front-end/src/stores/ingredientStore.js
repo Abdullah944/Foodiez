@@ -18,7 +18,7 @@ class IngredientStore {
       for (const key in newIngredient) {
         formData.append(key, newIngredient[key]); // append
       }
-      const response = await instance.post("/user", formData);
+      const response = await instance.post("/recipes/:slug", formData);
       this.ingredients.push(response.data);
     } catch (error) {
       console.log(

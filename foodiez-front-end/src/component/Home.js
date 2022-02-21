@@ -10,8 +10,7 @@ const Home = () => {
         alt="background"
         src="https://media.istockphoto.com/photos/culinary-background-with-traditional-ingredients-of-italian-cuisine-picture-id1278745986?b=1&k=20&m=1278745986&s=170667a&w=0&h=O7DjUu6D-mBNvwS68Ou_BmNF22a5XwrQgk2j9uV2Hs4="
       />
-
-      <CategoryModel />
+      {/* <CategoryModel /> */}
 
       {/* makeing prolem of display ( I THINK IT'S FIXED) */}
       <CategoryList />

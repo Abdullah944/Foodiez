@@ -1,17 +1,12 @@
 import React, { useState } from "react";
 import { Form, Row, Stack } from "react-bootstrap";
 import recipeStore from "../../stores/recipesStore";
-import CategoryModel from "../modal/CategoryModel";
 import RecipeModel from "../modal/RecipeModal";
 import RecipeCard from "../recipes/RecipeCard";
 // import SearchBar from "./SearchBar";
 
 function RecipesList() {
   const [query, setQuery] = useState("");
-
-  // const recipeList = recipeStore.recipes
-  //   .filter((recipe) => recipe.name.toLowerCase().includes(query.toLowerCase()))
-  //   .map((recipe) => <RecipeCard key={recipe._id} recipe={recipe} />);
 
   const recipeList = recipeStore.recipes
     .filter((recipeList) =>
@@ -25,11 +20,11 @@ function RecipesList() {
     <div>
       <h1 className="title-recipe text-uppercase">recipeList</h1>
       <Stack direction="horizontal" gap={3}>
-        {/* <Form.Control
-          className="m-2"
+        <Form.Control
+          className="m-5"
           placeholder="Search for recipeList by name"
           onChange={(event) => setQuery(event.target.value)}
-        /> */}
+        />
 
         <RecipeModel />
       </Stack>

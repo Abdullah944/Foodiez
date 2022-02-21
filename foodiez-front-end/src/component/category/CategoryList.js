@@ -10,23 +10,25 @@ function CategoryList() {
 
   const categoryList = categoryStore.categories
     .filter((category) =>
-      category.name.toLowerCase().includes(query.toLowerCase())
+      category.name.toLowerCase().includes(query.toLowerCase().trim())
     )
     .map((category) => <CategoryCard key={category._id} category={category} />);
 
   return (
     <div>
-      <h1 className="title-categories text-uppercase">categories</h1>
-      <Stack direction="horizontal" gap={3}>
-        <Form.Control
-          className="m-2"
-          placeholder="Search for category by name"
-          onChange={(event) => setQuery(event.target.value)}
-        />
-        <CategoryModel />
-      </Stack>
+      <div>
+        <h1 className="title-categories text-uppercase ">categories</h1>
+        <Stack direction="horizontal" gap={3}>
+          <Form.Control
+            className="m-2"
+            placeholder="Search for category by name"
+            onChange={(event) => setQuery(event.target.value)}
+          />
+          <CategoryModel />
+        </Stack>
 
-      <Row>{categoryList}</Row>
+        <Row>{categoryList}</Row>
+      </div>
     </div>
   );
 }

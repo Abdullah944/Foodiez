@@ -29,13 +29,15 @@ function IngredientModel({ oldIngredient }) {
   return (
     <>
       {/* ! this the EDIT button which we don't need - new and edit */}
-      <Button
-        className="btn-new bg-light"
-        variant="outline-dark"
-        onClick={handleShow}
-      >
-        {oldIngredient ? "Edit" : "New"}
-      </Button>
+      <div className="center-btn text-center">
+        <Button
+          className="btn-new bg-light "
+          variant="outline-dark"
+          onClick={handleShow}
+        >
+          {" Add New ingredient"}
+        </Button>
+      </div>
       <Modal show={show} onHide={handleClose}>
         <Modal.Body>
           <form onSubmit={handleSubmit}>
@@ -72,7 +74,7 @@ function IngredientModel({ oldIngredient }) {
             </InputGroup>
             {/* button inside the modal */}
             <Button variant="outline-dark" type="submit">
-              {oldIngredient ? "Edit" : "Add"} ingredient
+              {"Add"} ingredient
             </Button>
           </form>
         </Modal.Body>

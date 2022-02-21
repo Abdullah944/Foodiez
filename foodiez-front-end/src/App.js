@@ -3,9 +3,7 @@ import { Routes, Route } from "react-router";
 import CategoryList from "./component/category/CategoryList";
 import CategoryDetail from "./component/category/CategoryDetail";
 import Nav from "./component/Nav";
-import RecipesList from "./component/recipes/RecipesList";
 import RecipesDetails from "./component/recipes/RecipesDetails";
-import UserIngredientsRecipe from "./component/user/UserIngredientsRecipe";
 import IngredientDetail from "./component/ingredient/ingridentDetail";
 
 function App() {

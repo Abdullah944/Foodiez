@@ -30,13 +30,15 @@ function RecipeModel({ oldRecipe, categoryId }) {
 
   return (
     <>
-      <Button
-        className="btn-new bg-light new-btn"
-        variant="outline-dark"
-        onClick={handleShow}
-      >
-        {oldRecipe ? "Edit" : "New"}
-      </Button>
+      <div className="center-btn text-center">
+        <Button
+          className="new-btn  bg-light "
+          variant="outline-dark"
+          onClick={handleShow}
+        >
+          {"Add New Recipe"}
+        </Button>
+      </div>
       <Modal show={show} onHide={handleClose}>
         <Modal.Body>
           <form onSubmit={handleSubmit}>
@@ -73,7 +75,7 @@ function RecipeModel({ oldRecipe, categoryId }) {
             </InputGroup>
 
             <Button variant="outline-dark" type="submit">
-              {oldRecipe ? "Edit" : "Add"} recipe
+              {"Add"} recipe
             </Button>
           </form>
         </Modal.Body>

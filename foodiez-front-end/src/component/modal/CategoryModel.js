@@ -1,14 +1,8 @@
-import {
-  Button,
-  InputGroup,
-  FormControl,
-  Modal,
-  Dropdown,
-} from "react-bootstrap";
+import { Button, InputGroup, FormControl, Modal } from "react-bootstrap";
 import { useState } from "react";
 import categoryStore from "../../stores/categoryStore";
 
-function CategoryModel({ oldCategory }) {
+function CategoryModel({}) {
   const [show, setShow] = useState(false);
   const [category, setCategory] = useState({
     name: "",
@@ -42,7 +36,7 @@ function CategoryModel({ oldCategory }) {
         variant="outline-dark"
         onClick={handleShow}
       >
-        {oldCategory ? "Edit" : "New"}
+        {"New"}
       </Button>
       <Modal show={show} onHide={handleClose}>
         <Modal.Body>
@@ -78,20 +72,10 @@ function CategoryModel({ oldCategory }) {
                 placeholder="Description"
               />
             </InputGroup>
-            {/* <Dropdown className="mb-3">
-              <Dropdown.Toggle variant="success" id="dropdown-basic">
-                category
-              </Dropdown.Toggle>
 
-              <Dropdown.Menu>
-                <Dropdown.Item href="#/action-1">Breakfast</Dropdown.Item>
-                <Dropdown.Item href="#/action-2">Lunch</Dropdown.Item>
-                <Dropdown.Item href="#/action-3">Dinner</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown> */}
             {/* button inside the modal */}
             <Button variant="outline-dark" type="submit">
-              {oldCategory ? "Edit" : "Add"} Category
+              {"Add "} Category
             </Button>
           </form>
         </Modal.Body>
