@@ -1,19 +1,17 @@
 import React from "react";
 import { Navigate, useParams } from "react-router-dom";
 import { observer } from "mobx-react";
-import RecipeCard from "../recipes/RecipeCard";
 import IngredientModel from "../modal/IngredientModal";
 import recipesStore from "../../stores/recipesStore";
-import ingredientCard from "../../component/ingredient/ingredientCard";
+import IngredientCard from "../../component/ingredient/ingredientCard";
+import ingredientStore from "../../stores/ingredientStore";
 
 function IngredientDetail() {
   const { slug } = useParams();
   const recipe = recipesStore.recipes.find((recipe) => {
-    // console.log("####", category.recipes, slug);
     return recipe.slug === slug;
   });
 
-  console.log(recipe);
   if (!slug) {
     return <Navigate to="/" />;
   }
@@ -37,12 +35,17 @@ function IngredientDetail() {
       <p className="mb-4 description-center-white">
         Description: {recipe.description}
       </p>
-
-      <IngredientModel categoryId={recipe._id} />
-
-      {recipe.ingredients.map((recipe) => (
-        <RecipeCard key={recipe._id} recipe={recipe} />
-      ))}
+      <IngredientModel recipeId={recipe._id} />
+      {console.log(
+        "this is the ingredint in the store",
+        ingredientStore.ingredients
+      )}
+      {recipe.ingredients.map((ingredient) => {
+        let c = ingredientStore.ingredients.find((ing) => {
+          return ing._id === ingredient;
+        });
+        return <IngredientCard key={c._id} ingredient={c} />;
+      })}
     </div>
   );
 }

@@ -20,12 +20,17 @@ class IngredientStore {
         formData.append(key, newIngredient[key]); // append
       }
       // ! Change the path 21-2::
-      const response = await instance.post("/recipes", formData);
+      const response = await instance.post(`/ingredient/${recipeId}`, formData);
       this.ingredients.push(response.data);
 
-      recipesStore.recipes.map((recipe) =>
-        recipe._id === recipeId ? recipe.ingredient.push(response.data) : recipe
-      );
+      recipesStore.recipes.map((recipe) => {
+        console.log(recipe._id, recipeId);
+        console.log(recipe.ingredients, response.data);
+
+        return recipe._id === recipeId
+          ? recipe.ingredients.push(response.data._id)
+          : recipe;
+      });
     } catch (error) {
       console.log(
         "🚀 ~ file: ingredientStore.js ~ line 16 ~ ingredientStore ~ createIngredient= ~ error",
@@ -68,6 +73,7 @@ class IngredientStore {
       );
     } catch (error) {
       console.log("ingredientStore -> deleteIngredient -> error", error);
+      console.log(ingredientId); // log Id
     }
   };
 }
@@ -75,6 +81,7 @@ class IngredientStore {
 const ingredientStore = new IngredientStore();
 // It will only call this function when the app first starts
 ingredientStore.fetchIngredient();
+
 export default ingredientStore;
 
 // axios.METHOD(URL, BODY)

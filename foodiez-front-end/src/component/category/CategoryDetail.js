@@ -1,14 +1,13 @@
 import React from "react";
-import { Form, Row, Stack } from "react-bootstrap";
 import { Navigate, useParams } from "react-router-dom";
 import RecipeModel from "../modal/RecipeModal";
 import categoryStore from "../../stores/categoryStore";
 import { observer } from "mobx-react";
 import RecipeCard from "../recipes/RecipeCard";
+
 function CategoryDetail() {
   const { slug } = useParams();
   const category = categoryStore.categories.find((category) => {
-    // console.log("####", category.recipes, slug);
     return category.slug === slug;
   });
   if (!slug) {

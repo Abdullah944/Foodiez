@@ -2,14 +2,13 @@ import { Button, InputGroup, FormControl, Modal } from "react-bootstrap";
 import { useState } from "react";
 import ingredientStore from "../../stores/ingredientStore";
 
-function IngredientModel({ oldIngredient }) {
+function IngredientModel({ recipeId }) {
   const [show, setShow] = useState(false);
   const [ingredient, setIngredient] = useState({
     name: "",
     image: "",
     description: "",
   });
-  // oldIngredient ??
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -22,7 +21,7 @@ function IngredientModel({ oldIngredient }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    ingredientStore.createIngredient(ingredient);
+    ingredientStore.createIngredient(ingredient, recipeId);
     handleClose();
   };
 

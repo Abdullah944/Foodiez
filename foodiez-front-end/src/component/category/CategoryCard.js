@@ -33,11 +33,3 @@ const CategoryCard = ({ category }) => {
 };
 
 export default CategoryCard;
-{
-  /* <Button className="m-1" onClick={handleDelete} variant="danger">
-            DELETE
-          </Button> */
-}
-{
-  /* <CategoryModel oldCategory={category} /> */
-}

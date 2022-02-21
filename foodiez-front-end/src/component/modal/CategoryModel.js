@@ -9,7 +9,6 @@ function CategoryModel({}) {
     image: "",
     description: "",
   });
-  // oldCategory ??
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -22,8 +21,6 @@ function CategoryModel({}) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // if (oldCategory) categoryStore.updateCategory(category, oldCategory._id);
-    // else
     categoryStore.createCategory(category);
     handleClose();
   };

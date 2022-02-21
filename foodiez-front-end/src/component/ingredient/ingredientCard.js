@@ -6,34 +6,30 @@ const IngredientCard = ({ ingredient, recipe }) => {
   //   const ingredientList = ingredient.map((ingredient) => {
   //     return <IngredientCard key={ingredient._id} ingredient={ingredient} />;
   //   });
-  const handleDelete = () => ingredientStore.deleteRecipe(ingredient._id);
+  const handleDelete = () => ingredientStore.deleteIngredient(ingredient._id);
+
   return (
     <Col className="col-lg-4 category-cards">
       <Card>
         <Card.Body className="text-center card-background">
-          {/* <Card.Img variant="top" src={recipe.image} alt={recipe.name} />
-          <Card.Body className="text-center">
-            <Card.Title>{recipe.name}</Card.Title>
-            <Card.Text>{recipe.description}</Card.Text>
-          </Card.Body> */}
           <Card.Img
             variant="top"
             src={ingredient.image}
             alt={ingredient.name}
           />
-          <Card.Title id="category-name-text-category-card">
-            <u> Name:</u> {ingredient.name}
+          <Card.Title id="ingredient-name-text-card">
+            <u> Name: </u> <p>{ingredient.name}</p>
           </Card.Title>
-          <Card.Text id="description-text-category-card">
-            <u> Description: </u> {ingredient.description}
+          <Card.Text id="ingredient-text-card">
+            <u> Description: </u> <p>{ingredient.description}</p>
           </Card.Text>
-          <Button
+          {/* <Button
             className="m-1 text-center"
             onClick={handleDelete}
             variant="danger"
           >
             DELETE
-          </Button>
+          </Button> */}
 
           {/* <Row>{ingredientList}</Row> */}
         </Card.Body>

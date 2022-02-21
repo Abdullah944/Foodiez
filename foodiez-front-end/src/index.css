@@ -155,3 +155,9 @@ body {
   background-color: #359f07de;
   border: black solid;
 }
+#ingredient-name-text-card {
+  font-size: 35px;
+}
+#ingredient-text-card {
+  font-size: 20px;
+}
