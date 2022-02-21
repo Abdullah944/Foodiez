@@ -1,5 +1,6 @@
 import { makeAutoObservable } from "mobx";
 import instance from "./instance";
+import recipesStore from "./recipesStore";
 
 class IngredientStore {
   // make the category default value is empty string:
@@ -11,15 +12,20 @@ class IngredientStore {
   }
   //----------------------------------------------------------------------------------------------
   // CREATE Category   DONE  :
-  createIngredient = async (newIngredient) => {
+  createIngredient = async (newIngredient, recipeId) => {
     try {
-      // ! form data for SHOWING the img::
+      //  form data for SHOWING the img::
       const formData = new FormData(); // Currently empty
       for (const key in newIngredient) {
         formData.append(key, newIngredient[key]); // append
       }
-      const response = await instance.post("/recipes/:slug", formData);
+      // ! Change the path 21-2::
+      const response = await instance.post("/recipes", formData);
       this.ingredients.push(response.data);
+
+      recipesStore.recipes.map((recipe) =>
+        recipe._id === recipeId ? recipe.ingredient.push(response.data) : recipe
+      );
     } catch (error) {
       console.log(
         "🚀 ~ file: ingredientStore.js ~ line 16 ~ ingredientStore ~ createIngredient= ~ error",

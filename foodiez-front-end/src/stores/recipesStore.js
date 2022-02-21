@@ -14,7 +14,7 @@ class RecipesStore {
   // CREATE recipe   DONE  :
   createRecipe = async (newRecipe, categoryId) => {
     try {
-      //! form data for SHOWING the img::
+      // form data for SHOWING the img::
       const formData = new FormData(); // Currently empty
       for (const key in newRecipe) formData.append(key, newRecipe[key]); // appaned
       console.log("new recipe", newRecipe, categoryId);
